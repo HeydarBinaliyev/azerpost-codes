@@ -32,13 +32,11 @@ public class Main {
 		return findedKeys;
 		
 	}
-	public void addToIndeksler(String rayon,String kend,String code) {
-		
-	}
 	public String createLink(int i) {
 		i+=78;
 		if(i==86)i++;
 		if(i==102)i++;
+		//link of azerpost.az
 		String link="http://www.azerpost.az/?options=content&id=";
 		return link.concat(String.valueOf(i));
 	}
@@ -48,34 +46,30 @@ public class Main {
 		Main m=new Main();
 		//create az characters
 		Map<String,String> azCharacters=new HashMap<String, String>();
-		azCharacters.put("&#601;", 	"ə");
-		azCharacters.put("&#399;",	"Ə");
+		azCharacters.put("&#601;","ə");
+		azCharacters.put("&#399;","Ə");
 		azCharacters.put("&#305;" ,"i");
-		azCharacters.put("&#287;",	"ğ");
+		azCharacters.put("&#287;","ğ");
 		azCharacters.put("&Ccedil;","Ç");
-		azCharacters.put("&ccedil;", "ç");
-		azCharacters.put("&#304;",	"İ");
-		azCharacters.put("&#351;", "ş");
-		azCharacters.put("&uuml;", "ü");
-		azCharacters.put("&ouml;", "ö");
-		azCharacters.put("&#350;", "Ş");
-		azCharacters.put("&Uuml;", "Ü");
-		azCharacters.put("&Ouml;", "Ö");
+		azCharacters.put("&ccedil;","ç");
+		azCharacters.put("&#304;","İ");
+		azCharacters.put("&#351;","ş");
+		azCharacters.put("&uuml;","ü");
+		azCharacters.put("&ouml;","ö");
+		azCharacters.put("&#350;","Ş");
+		azCharacters.put("&Uuml;","Ü");
+		azCharacters.put("&Ouml;","Ö");
 		
 		FileWriter fileWriter=null;
-		
-		
-		
 		try {
+			//path for a json file
 			fileWriter=new FileWriter("C:\\Users\\hayda\\eclipse-workspace\\GetPostCodes - forgithub\\indeksler.json");
-			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-	
-		//String link="http://www.azerpost.az/?options=content&id=78";
+		//regions to be fetched
 		String[] rayonlar = {"Ağdam","Ağdaş","Ağcabədi","Bərdə","Balakən","Beyləqan","Biləsuvar","Oğuz","Qazax","",
 							 "Qax","Qobustan","Qəbələ","Quba","Qusar","Qubadli","Dəvəçi","Daşkəsən","Zərdab","Zaqatala",
 							 "Zəngilan","Əli-Bayramli","Yevlax","Yardimli","","İsmayilli","İmişli","Kürdəmir","Kəlbəcər",
@@ -89,6 +83,7 @@ public class Main {
 			conn.createConnection(m.createLink(i));
 			BufferedReader reader=conn.getStream();
 			String line=null;
+			//address
 			String ied=null;
 			String code=null;
 			try {
